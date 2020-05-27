@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>846</x>
+      <y>336</y>
+      <w>126</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>Transform
+--
+//position of the object
+-position: Position
+//rotation of the object
+-rotation: float
+--
+//moves the position by x and y
++translate(x,y)
+//rotates the object by a certain amount of degree
++rotate(deg)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>582</x>
+      <y>336</y>
+      <w>126</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>abstract:GameObject
+--
+//stores all the gameobject that are created
+//static keyword means that the variable is part of the class
+//rather than the instance of a class
+//we can save all the gameObject created by adding 
+//the instance of an object itself to the list
+//we do this in the init() function
+-static gameObjects: GameObject[]
+-id: int
+-transform: Transform 
+-children: GameObject[]
+-attachable: Attachable
+//
+//This is only true if we want
+//the object to be present in the game
+//world, but won't update 
+-isEnabled: bool
+--
+//this function is run when the object is created
+//this function should be an IIEF
+//Immediately Invoked function
+//Please search in google if you dont know
++init()
+//this function is run every frame
+//but it itself does not have a loop
+//you will put here things that you need to update every frame
++update()
++addChild()
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>702</x>
+      <y>384</y>
+      <w>156</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>240.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>852</x>
+      <y>504</y>
+      <w>120</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>CameraObject
+//attachable here is going to be added locally
+//so you will create 
+--
+-id: int
+-transform: Transform 
+-canvasSize : Position
+-children: GameObject[]
+-attachable: Attachable
+--
++init()
++update()
++addChild
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>318</x>
+      <y>396</y>
+      <w>126</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>abstract:Task
+--
+//this is the gameobject that this object is attached to
+-parent
+--
++init()
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>372</x>
+      <y>504</y>
+      <w>18</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>246</x>
+      <y>534</y>
+      <w>306</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;490.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>372</x>
+      <y>534</y>
+      <w>18</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>186</x>
+      <y>600</y>
+      <w>126</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>Collision extends Task
+--
+//this is the gameobject that this object is attached to
+-parent
+--
++init()
+//
+//Collision uses a graph
+//each collision object occupies a certain number of tiles
+//amount of tiles occupied is based on the size of the gameobject itself
+//Collision takes care of the occupation of cells
+//
++updateCollisionBoundary()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>600</y>
+      <w>126</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>Image exetends Task
+--
+//this is the gameobject that this object is attached to
+-parent
+//image source
+-src
+//generally same as parentSize(GameObject size)
+-imageSize()
+--
++init()
++updateFunction
+-setSrc()
+-setImageSize()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>246</x>
+      <y>534</y>
+      <w>18</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>534</x>
+      <y>534</y>
+      <w>18</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>480</x>
+      <y>600</y>
+      <w>126</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>Movement exetends Task
+--
+//this is the gameobject that this object is attached to
+-parent
+//
+//a helper class
+//provides details of when to move
+-movementController
+--
++init()
+//
+//updateMovement() uses the public functions of the movement controller
+//to know if a movement should be done
+//for example, if moveUp() = true , then { move up object by getSpeed()}
+//to move the object we use parent.transform.translate
+//
++updateMovement()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>480</x>
+      <y>792</y>
+      <w>126</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>MovementController 
+--
+-speed
+--
++init()
++getSpeed()
++moveUp() : bool
++moveDown() : bool
++moveRight() : bool
++moveLeft() : bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>540</x>
+      <y>708</y>
+      <w>18</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>84</x>
+      <y>0</y>
+      <w>132</w>
+      <h>186</h>
+    </coordinates>
+    <panel_attributes>NOTE:
+Size in the game is :
+1 unit = 25 pixels x25 pixels
+when zoom = 1
+
+Camera has a functionality 
+of zoom. We only want to
+increase the pixels of an 
+image when increasing the 
+zoom.
+
+So we use a seperate
+unit for measurement
+
+2 unit = 50px x 50px
+0.5 unit = 12.5px x 12.5px
+
+Therfore, unit is a multiplier
+to get the actual size of an image</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>438</x>
+      <y>276</y>
+      <w>156</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;240.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>576</x>
+      <y>54</y>
+      <w>126</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>GameRunner
+--
+//stores all the gameObject created
+gameObjects: GameObject[]
+--
++init()
+//this is the loop
+//this runs the game in a loop
+//all the gameobjects will have their update function
++update()
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>318</x>
+      <y>228</y>
+      <w>126</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>Attachable
+--
+//this is the gameobject that this object is attached to
+-parent
+-tasks: Task[]
+--
++init()
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>372</x>
+      <y>336</y>
+      <w>18</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>0</x>
+      <y>438</y>
+      <w>216</w>
+      <h>186</h>
+    </coordinates>
+    <panel_attributes>NOTE:
+
+Attachable vs Methods (Functions inside a class)
+
+Attachable are those that most of the game object needs.
+Like movement and collision.
+
+We will use method which are specific to a game object
+
+For example, CameraObject. It needs rendering which
+no other objects are going to use.
+Therefore, we will use method in that case.
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>636</x>
+      <y>162</y>
+      <w>18</w>
+      <h>186</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;290.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1062</x>
+      <y>336</y>
+      <w>126</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>Position
+--
+//position of the object
+-xPos: float
+-yPos: float
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>966</x>
+      <y>378</y>
+      <w>108</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>160.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>636</x>
+      <y>444</y>
+      <w>228</w>
+      <h>138</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>360.0;210.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>456</x>
+      <y>414</y>
+      <w>114</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>456</x>
+      <y>414</y>
+      <w>114</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>84</x>
+      <y>216</y>
+      <w>132</w>
+      <h>186</h>
+    </coordinates>
+    <panel_attributes>NOTE:
+
+Task is abstract 
+Therefore, we can create
+more "Task" object later on.
+But now these "Task" Objects should be on the game engine</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
