@@ -41,4 +41,6 @@ You can also build the bundle for development, where the game will update whenev
 
 `Webpack` also bundles images, fonts and css into one javascript. Please read the following documentation for `Asset-Management`.
 
+                https://webpack.js.org/guides/asset-management/
+
 With this you can finally start the project.

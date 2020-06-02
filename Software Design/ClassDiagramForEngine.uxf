@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>6</zoom_level>
+  <zoom_level>5</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>846</x>
-      <y>336</y>
-      <w>126</w>
-      <h>114</h>
+      <x>740</x>
+      <y>355</y>
+      <w>105</w>
+      <h>95</h>
     </coordinates>
     <panel_attributes>Transform
 --
@@ -26,10 +26,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>582</x>
-      <y>336</y>
-      <w>126</w>
-      <h>114</h>
+      <x>525</x>
+      <y>355</y>
+      <w>115</w>
+      <h>95</h>
     </coordinates>
     <panel_attributes>abstract:GameObject
 --
@@ -67,21 +67,21 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>702</x>
-      <y>384</y>
-      <w>156</w>
-      <h>18</h>
+      <x>635</x>
+      <y>395</y>
+      <w>115</w>
+      <h>15</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
-    <additional_attributes>240.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>210.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>852</x>
-      <y>504</y>
-      <w>120</w>
-      <h>132</h>
+      <x>525</x>
+      <y>495</y>
+      <w>115</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>CameraObject
 //attachable here is going to be added locally
@@ -104,10 +104,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>318</x>
-      <y>396</y>
-      <w>126</w>
-      <h>114</h>
+      <x>320</x>
+      <y>495</y>
+      <w>105</w>
+      <h>95</h>
     </coordinates>
     <panel_attributes>abstract:Task
 --
@@ -122,10 +122,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>372</x>
-      <y>504</y>
-      <w>18</w>
-      <h>48</h>
+      <x>365</x>
+      <y>585</y>
+      <w>15</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
@@ -133,10 +133,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>246</x>
-      <y>534</y>
-      <w>306</w>
-      <h>18</h>
+      <x>260</x>
+      <y>610</y>
+      <w>255</w>
+      <h>15</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;490.0;10.0</additional_attributes>
@@ -144,10 +144,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>372</x>
-      <y>534</y>
-      <w>18</w>
-      <h>78</h>
+      <x>365</x>
+      <y>610</y>
+      <w>15</w>
+      <h>65</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
@@ -155,15 +155,16 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>186</x>
-      <y>600</y>
-      <w>126</w>
-      <h>114</h>
+      <x>210</x>
+      <y>665</y>
+      <w>105</w>
+      <h>95</h>
     </coordinates>
     <panel_attributes>Collision extends Task
 --
 //this is the gameobject that this object is attached to
 -parent
+-cellsOccupied[]
 --
 +init()
 //
@@ -173,6 +174,8 @@
 //Collision takes care of the occupation of cells
 //
 +updateCollisionBoundary()
++enableCollision()
++disableCollision()
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -180,9 +183,9 @@
     <id>UMLClass</id>
     <coordinates>
       <x>330</x>
-      <y>600</y>
-      <w>126</w>
-      <h>114</h>
+      <y>665</y>
+      <w>105</w>
+      <h>95</h>
     </coordinates>
     <panel_attributes>Image exetends Task
 --
@@ -202,10 +205,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>246</x>
-      <y>534</y>
-      <w>18</w>
-      <h>78</h>
+      <x>260</x>
+      <y>610</y>
+      <w>15</w>
+      <h>65</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
@@ -213,10 +216,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>534</x>
-      <y>534</y>
-      <w>18</w>
-      <h>78</h>
+      <x>500</x>
+      <y>610</y>
+      <w>15</w>
+      <h>65</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
@@ -224,10 +227,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>480</x>
-      <y>600</y>
-      <w>126</w>
-      <h>114</h>
+      <x>455</x>
+      <y>665</y>
+      <w>105</w>
+      <h>95</h>
     </coordinates>
     <panel_attributes>Movement exetends Task
 --
@@ -251,10 +254,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>480</x>
-      <y>792</y>
-      <w>126</w>
-      <h>114</h>
+      <x>455</x>
+      <y>825</y>
+      <w>105</w>
+      <h>95</h>
     </coordinates>
     <panel_attributes>MovementController 
 --
@@ -271,10 +274,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>540</x>
-      <y>708</y>
-      <w>18</w>
-      <h>96</h>
+      <x>505</x>
+      <y>755</y>
+      <w>15</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
     <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
@@ -282,10 +285,10 @@
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>84</x>
-      <y>0</y>
-      <w>132</w>
-      <h>186</h>
+      <x>125</x>
+      <y>165</y>
+      <w>110</w>
+      <h>155</h>
     </coordinates>
     <panel_attributes>NOTE:
 Size in the game is :
@@ -311,21 +314,21 @@ to get the actual size of an image</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>438</x>
-      <y>276</y>
-      <w>156</w>
-      <h>126</h>
+      <x>420</x>
+      <y>395</y>
+      <w>115</w>
+      <h>15</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
-    <additional_attributes>10.0;10.0;240.0;190.0</additional_attributes>
+    <additional_attributes>10.0;10.0;210.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>576</x>
-      <y>54</y>
-      <w>126</w>
-      <h>114</h>
+      <x>530</x>
+      <y>205</y>
+      <w>105</w>
+      <h>95</h>
     </coordinates>
     <panel_attributes>GameRunner
 --
@@ -345,10 +348,10 @@ gameObjects: GameObject[]
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>318</x>
-      <y>228</y>
-      <w>126</w>
-      <h>114</h>
+      <x>320</x>
+      <y>355</y>
+      <w>105</w>
+      <h>95</h>
     </coordinates>
     <panel_attributes>Attachable
 --
@@ -365,10 +368,10 @@ gameObjects: GameObject[]
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>372</x>
-      <y>336</y>
-      <w>18</w>
-      <h>72</h>
+      <x>365</x>
+      <y>445</y>
+      <w>15</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
     <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
@@ -377,9 +380,9 @@ gameObjects: GameObject[]
     <id>UMLNote</id>
     <coordinates>
       <x>0</x>
-      <y>438</y>
-      <w>216</w>
-      <h>186</h>
+      <y>520</y>
+      <w>180</w>
+      <h>155</h>
     </coordinates>
     <panel_attributes>NOTE:
 
@@ -400,21 +403,21 @@ Therefore, we will use method in that case.
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>636</x>
-      <y>162</y>
-      <w>18</w>
-      <h>186</h>
+      <x>580</x>
+      <y>295</y>
+      <w>15</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
-    <additional_attributes>10.0;290.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1062</x>
-      <y>336</y>
-      <w>126</w>
-      <h>114</h>
+      <x>940</x>
+      <y>355</y>
+      <w>105</w>
+      <h>95</h>
     </coordinates>
     <panel_attributes>Position
 --
@@ -428,54 +431,32 @@ Therefore, we will use method in that case.
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>966</x>
-      <y>378</y>
-      <w>108</w>
-      <h>18</h>
+      <x>840</x>
+      <y>390</y>
+      <w>110</w>
+      <h>15</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
-    <additional_attributes>160.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>200.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>636</x>
-      <y>444</y>
-      <w>228</w>
-      <h>138</h>
+      <x>570</x>
+      <y>445</y>
+      <w>15</w>
+      <h>60</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>360.0;210.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>456</x>
-      <y>414</y>
-      <w>114</w>
-      <h>18</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>456</x>
-      <y>414</y>
-      <w>114</w>
-      <h>18</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>84</x>
-      <y>216</y>
-      <w>132</w>
-      <h>186</h>
+      <x>125</x>
+      <y>345</y>
+      <w>110</w>
+      <h>155</h>
     </coordinates>
     <panel_attributes>NOTE:
 
@@ -484,5 +465,132 @@ Therefore, we can create
 more "Task" object later on.
 But now these "Task" Objects should be on the game engine</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>745</x>
+      <y>205</y>
+      <w>105</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>//This is a singleton.
+WorldGenerator
+--
+//WorldGenerator needs an Image to build the world
+-map: Image
+//WorldGenerator needs an Image to build the collision
+//by collision I mean walls that won't be broken
+//if we want a dynamic wall we can ignore this
+-collisionMap: Image
+--
++init()
+//generates the world
+//the only thing it does, is creating a table that 
+//has number of rows = number of cells
+//and create a gameobject, which holds an image of a map
+//which is postioned to (0,0)
++generateWorld()
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1000</x>
+      <y>185</y>
+      <w>105</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>//this is going to be a global singleton variable
+ClientDatabaseHelper
+import "sqlite"
+--
+//stores all the gameObject created
+-Database _database
+--
++init()
+//this is the loop
+//this runs the game in a loop
+//all the gameobjects will have their update function
++insertItem()
++deleteItem()
++updateItem()
++getItems()
++rawInsert()
++rawDelete()
++rawUpdate()
++rawQuery()
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>210</x>
+      <y>820</y>
+      <w>105</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>//This is a cell of a graph
+//the graph represents the game world
+//this created to provide collisions
+Cell
+--
+//if there is a gameobject occupying the space
+//then occupiedId = id of the gameObject
+//if there is no gameobject occupying
+//then occupiedId = -1
+-id: int
+-occupiedId: int
+//
++occupy()
++unOccupy()
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>845</x>
+      <y>245</y>
+      <w>165</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
+World Generator uses insert for quey</panel_attributes>
+    <additional_attributes>310.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>240</y>
+      <w>125</w>
+      <h>25</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
+World is generated
+in the GameRunner.init()</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>250</x>
+      <y>755</y>
+      <w>15</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
