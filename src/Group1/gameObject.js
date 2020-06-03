@@ -1,4 +1,3 @@
-
 class gameObject {
     constructor(id,transform,children,attachable,isEnabled) {
         this.id=id;

@@ -1,6 +1,5 @@
 import * as gameObject from './gameObject.js'
 
-
 var gameObject = new gameObject();
 
 

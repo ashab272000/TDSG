@@ -1,7 +1,6 @@
 const map ;
 const collisionMap;
 
-
 function init() {
 
 }
