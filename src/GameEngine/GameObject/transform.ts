@@ -1,3 +1,5 @@
+import { Position } from "./position";
+
 export class Transform {
     position: Position;
     rotation: number;

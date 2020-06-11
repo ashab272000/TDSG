@@ -1,3 +1,7 @@
+import { Transform } from "./transform";
+
+
+
 export class GameObject {
     id: number;
     transform: Transform;
@@ -13,6 +17,14 @@ export class GameObject {
 
     addChild(object: GameObject) {
         this.children.push(object);
+    }
+
+    init(){
+
+    }
+
+    update(){
+        
     }
 
 }
