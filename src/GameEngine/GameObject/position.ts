@@ -1,7 +1,7 @@
 export class Position {
 
-    xpos: number;
-    ypos: number;
+    public xpos: number;
+    public ypos: number;
 
     constructor() {
         this.xpos = 0;

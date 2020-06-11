@@ -1,8 +1,8 @@
 import { Position } from "./position";
 
 export class Transform {
-    position: Position;
-    rotation: number;
+    public position: Position;
+    public rotation: number;
 
     constructor() {
         this.position = new Position();
