@@ -1,5 +1,5 @@
 
-import { GameObject } from './game_object';
+import { GameObject } from './GameObject/game_object';
 
 export class GameRunner {
 
