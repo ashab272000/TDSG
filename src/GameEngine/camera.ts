@@ -1,17 +1,17 @@
 class camera {
     id: number;
-    transform: transformObject;
+    transform: Transform;
     canvasSize: number[];
-    children: gameObject[];
+    children: GameObject[];
 
     constructor(id: number, xpos: number, ypos: number, degree: number) {
         this.id = id;
-        this.transform = new transformObject(xpos, ypos, degree);
+        this.transform = new Transform();
         this.canvasSize = [xpos, ypos];
         this.children = [];
     }
 
-    addChild(object: gameObject) {
+    addChild(object: GameObject) {
         this.children.push(object);
     }
     // my idea isthat player is assigned an camera object, there is a field called "cells" or something which is and
