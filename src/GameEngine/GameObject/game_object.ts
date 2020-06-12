@@ -5,7 +5,7 @@ export class GameObject {
     public static gameObjects : GameObject[];
     //static number, which will provide id
     //for every gameobject starting from 0
-    public static nextId
+    public static nextId : number;
     //id of the gameobject
     private id: number;
     //transform of the gameobject
