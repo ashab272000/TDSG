@@ -1,6 +1,6 @@
 import {Cell} from './cell';
 
-export class WorldGenerator{
+export class World{
 
     //size of the world
     //if size = 25
@@ -11,6 +11,7 @@ export class WorldGenerator{
 
     constructor(size : number){
         this.size = size;
+        this.generateWorld();
     }
 
     private generateWorld(){
