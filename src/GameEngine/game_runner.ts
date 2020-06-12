@@ -1,19 +1,19 @@
 
 import { GameObject } from './GameObject/game_object';
-import { WorldGenerator } from './WorldClass/world_generator';
+import { World} from './WorldClass/world';
 
 export class GameRunner {
 
     //gameobject is an array of all the gameobject instances in the world
     private gameObjects : GameObject[];
-    private worldGenerator : WorldGenerator;
+    private world : World;
 
 
     constructor( worldSize = 25){
         //gets all the gameObject instances
         this.gameObjects = GameObject.gameObjects;
-        //Creates a worldgenerator
-        this.worldGenerator = new WorldGenerator(worldSize);
+        //Creates a world
+        this.world = new World(worldSize);
         this.init();
         this.update();
 
