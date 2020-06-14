@@ -1,6 +1,6 @@
 import { Transform } from "./transform";
 
-export class GameObject {
+export abstract class GameObject {
     //saves all the GameObject instances
     public static gameObjects : GameObject[];
     //static number, which will provide id
