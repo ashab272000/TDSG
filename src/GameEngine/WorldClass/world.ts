@@ -25,10 +25,12 @@ export class World{
                 this.addCell();
             }
         }
-
-        console.log(this.cells.length);
     }
 
+    //returns the cells of the world
+    public getCells(){
+        return this.cells;
+    }
     //Creates a cell
     //and saves it
     //currently saves it to an array

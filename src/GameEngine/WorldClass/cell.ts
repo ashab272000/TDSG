@@ -27,4 +27,12 @@ export class Cell {
     public deOccupy(){
         this.occupiedId = -1;
     }
+
+    public getId(){
+        return this.id;
+    }
+
+    public getOccupiedId(){
+        return this.occupiedId;
+    }
 }
