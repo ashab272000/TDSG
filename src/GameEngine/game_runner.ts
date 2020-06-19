@@ -14,7 +14,8 @@ export class GameRunner {
         //gets all the gameObject instances
         this.gameObjects = GameObject.gameObjects != null ? GameObject.gameObjects : [];
         //Creates a world
-        this.world = new World(worldSize);
+        this.world = new World();
+        this.world.generateWorld(worldSize);
         //set the frame per second
         this.fps = fps;
         this.init();

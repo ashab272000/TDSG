@@ -2,25 +2,32 @@ import {Cell} from './cell';
 
 export class World{
 
-    //size of the world
-    //if size = 25
-    //world will generate 25x25 unit area for the world
-    private size = 0;
+    //creating singleton
+    private static instance : World;
+
     //this will store all the cells created
     private cells : Cell[] = [];
 
-    constructor(size : number){
-        this.size = size;
-        this.generateWorld();
+    constructor(){
+
     }
 
-    private generateWorld(){
+    public static getInstance(){
+        
+        if(!World.instance){
+            World.instance = new World();
+        }
+
+        return World.instance;
+    }
+
+    public generateWorld(size: number){
         //adds cell to cells array 
         //two forloops allows us to create 
         //an array of size = this.size ^ 2
-        for(let i = 0; i< this.size; i++)
+        for(let i = 0; i< size; i++)
         {
-            for(let j = 0; j< this.size; j++)
+            for(let j = 0; j< size; j++)
             {
                 this.addCell();
             }
