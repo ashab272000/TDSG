@@ -1,11 +1,11 @@
 import { Transform } from "./transform";
 
-export abstract class GameObject {
+export class GameObject {
     //saves all the GameObject instances
-    public static gameObjects : GameObject[];
+    public static gameObjects : GameObject[] = [];
     //static number, which will provide id
     //for every gameobject starting from 0
-    public static nextId : number;
+    public static nextId : number = 0;
     //id of the gameobject
     private id: number;
     //transform of the gameobject
@@ -16,6 +16,8 @@ export abstract class GameObject {
     //isEnabled will allow us to have a gameobject in the world
     //but not active
     public isEnabled: boolean;
+    //this is the image or sprite of the gameobject
+    private image: HTMLImageElement;
 
     constructor() {
         this.id = GameObject.nextId;
@@ -28,6 +30,18 @@ export abstract class GameObject {
         GameObject.gameObjects.push(this);
         //increment the nextId
         GameObject.nextId++;
+    }
+
+    getId(){
+        return this.id;
+    }
+
+    getImage(){
+        return this.image;
+    }
+
+    setImage(image : HTMLImageElement){
+        this.image = image;
     }
 
     addChild(object: GameObject) {
