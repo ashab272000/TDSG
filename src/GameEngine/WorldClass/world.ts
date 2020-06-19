@@ -5,6 +5,9 @@ export class World{
     //creating singleton
     private static instance : World;
 
+    //size of the world
+    private size: number;
+
     //this will store all the cells created
     private cells : Cell[] = [];
 
@@ -22,6 +25,7 @@ export class World{
     }
 
     public generateWorld(size: number){
+        this.size = size;
         //adds cell to cells array 
         //two forloops allows us to create 
         //an array of size = this.size ^ 2
@@ -37,6 +41,13 @@ export class World{
     //returns the cells of the world
     public getCells(){
         return this.cells;
+    }
+    public getCellWithId(id : number){
+        return this.cells[id];
+    }
+    //returns the size of the world
+    public getSize(){
+        return this.size;
     }
     //Creates a cell
     //and saves it
