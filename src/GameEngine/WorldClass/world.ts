@@ -43,7 +43,7 @@ export class World{
     //currently saves it to an array
     //an sqlite database will be implemented later
     private addCell(){
-        let cell = new Cell();
+        let cell = new Cell(this.cells.length);
         this.cells.push(cell);
     }
 }
