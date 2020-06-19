@@ -3,6 +3,7 @@ import { Position } from "./position";
 export class Transform {
     public position: Position;
     public rotation: number;
+    private cellId: number;
 
     constructor() {
         this.position = new Position();
