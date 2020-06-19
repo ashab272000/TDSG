@@ -7,7 +7,7 @@ export class World{
     //world will generate 25x25 unit area for the world
     private size = 0;
     //this will store all the cells created
-    private cells : Cell[];
+    private cells : Cell[] = [];
 
     constructor(size : number){
         this.size = size;
@@ -25,6 +25,8 @@ export class World{
                 this.addCell();
             }
         }
+
+        console.log(this.cells.length);
     }
 
     //Creates a cell

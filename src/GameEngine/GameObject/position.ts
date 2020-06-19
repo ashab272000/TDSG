@@ -1,11 +1,11 @@
 export class Position {
 
-    public xpos: number;
-    public ypos: number;
+    public x: number;
+    public y: number;
 
     constructor() {
-        this.xpos = 0;
-        this.ypos = 0;
+        this.x = 0;
+        this.y = 0;
     }
 
 }

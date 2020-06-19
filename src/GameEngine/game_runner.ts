@@ -7,13 +7,16 @@ export class GameRunner {
     //gameobject is an array of all the gameobject instances in the world
     private gameObjects : GameObject[];
     private world : World;
+    private fps : number;
 
 
-    constructor( worldSize = 25){
+    constructor( worldSize = 25, fps = 25){
         //gets all the gameObject instances
-        this.gameObjects = GameObject.gameObjects;
+        this.gameObjects = GameObject.gameObjects != null ? GameObject.gameObjects : [];
         //Creates a world
         this.world = new World(worldSize);
+        //set the frame per second
+        this.fps = fps;
         this.init();
         this.update();
 
@@ -30,11 +33,13 @@ export class GameRunner {
         //40ms = 25fps
         //This function runs an interval throughout the game
         //it updates all the gameobjects with their update functions
+        //get the time interval for the update loop
+        const intervalTime = 1000/this.fps;
         setInterval( () => {
             this.gameObjects.forEach(element => {
                 element.update()   
             });
-        }, 40)
+        }, intervalTime)
     }
 
 }

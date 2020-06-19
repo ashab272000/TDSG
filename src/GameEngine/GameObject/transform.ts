@@ -10,8 +10,8 @@ export class Transform {
     }
 
     translate(x: number, y: number) {
-        this.position.xpos += x;
-        this.position.ypos += y;
+        this.position.x += x;
+        this.position.y += y;
     }
 
     rotate(degree: number) {
