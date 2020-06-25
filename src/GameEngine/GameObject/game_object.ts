@@ -1,4 +1,5 @@
 import { Transform } from "./transform";
+import { SubWorld } from "../WorldClass/sub_world";
 
 export class GameObject {
     //saves all the GameObject instances
@@ -16,6 +17,9 @@ export class GameObject {
     //isEnabled will allow us to have a gameobject in the world
     //but not active
     public isEnabled: boolean;
+
+    //the id of the subworld the gameobject is located in
+    public subworld : SubWorld = null;
     //this is the image or sprite of the gameobject
     private image: HTMLImageElement;
 

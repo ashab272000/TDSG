@@ -19,7 +19,16 @@ export class SubWorld {
     }
 
     public removeGameObject(gameObject : GameObject){
-        delete this.gameObjects[this.gameObjects.indexOf(gameObject)];
+        let index = this.gameObjects.indexOf(gameObject);
+        return this.gameObjects.splice(index,1)[0];
+    }
+
+    public contains(gameObject : GameObject){
+        return this.gameObjects.includes(gameObject);
+    }
+
+    public getGameobjects(){
+        return this.gameObjects;
     }
 
     public getId(){

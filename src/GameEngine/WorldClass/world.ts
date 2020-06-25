@@ -49,7 +49,7 @@ export class World{
 
         for(let i = 0; i< totalSubWorlds; i++)
         {
-                this.subworlds.push(new SubWorld(i));   
+            this.subworlds.push(new SubWorld(i));   
         }
     }
 
@@ -58,6 +58,7 @@ export class World{
         //inititalizes all the gameobjects
         GameObject.gameObjects.forEach(element => {
             element.init()   
+            this.assignSubworld(element);
         });
     }
 
@@ -69,7 +70,8 @@ export class World{
         const intervalTime = 1000/fps;
         setInterval( () => {
             GameObject.gameObjects.forEach(element => {
-                element.update()   
+                element.update();  
+                this.assignSubworld(element);
             });
         }, intervalTime)
     }
@@ -107,6 +109,29 @@ export class World{
         {
             delete GameObject.gameObjects[i];
         }
+        GameObject.gameObjects = [];
     } 
+
+    public test_assignSubworld(gameObject : GameObject){
+        this.assignSubworld(gameObject);
+    }
+
+    private assignSubworld(gameObject : GameObject){
+
+        let pos = gameObject.transform.position;
+        let subworld = this.getSubWorldWithUnits(pos.x, pos.y);
+        if(gameObject.subworld != null || gameObject.subworld != undefined)
+        {
+            if(subworld != gameObject.subworld){
+                gameObject.subworld.removeGameObject(gameObject);
+                subworld.addGameObject(gameObject);
+                gameObject.subworld = subworld;
+            }
+            
+        }else{
+            subworld.addGameObject(gameObject);
+            gameObject.subworld = subworld;
+        }
+    }
 
 }

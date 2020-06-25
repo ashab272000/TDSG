@@ -24,4 +24,26 @@ describe("GameObject", () => {
         const a  = new GameObject();
         expect(a.getId()).to.equal(8);
     });
+
+    it('check initial-position', () => {
+        const a = new GameObject();
+        const posA = a.transform.position;
+        expect(posA.x).to.equal(0);
+        expect(posA.y).to.equal(0);
+    })
+    it('check position after translating once', () => {
+        const a = new GameObject();
+        const posA = a.transform.position;
+        a.transform.translate(1,5);
+        expect(posA.x).to.equal(1);
+        expect(posA.y).to.equal(5);
+    })
+    it('check position after translating twice', () => {
+        const a = new GameObject();
+        const posA = a.transform.position;
+        a.transform.translate(1,5);
+        a.transform.translate(3,2);
+        expect(posA.x).to.equal(4);
+        expect(posA.y).to.equal(7);
+    })
 });
