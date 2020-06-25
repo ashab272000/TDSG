@@ -25,22 +25,13 @@ export class GameRunner {
 
     private init(){
         //inititalizes all the gameobjects
-        this.gameObjects.forEach(element => {
-            element.init()   
-        });
+        this.world.init();
     }
 
     private update(){
-        //40ms = 25fps
-        //This function runs an interval throughout the game
-        //it updates all the gameobjects with their update functions
-        //get the time interval for the update loop
-        const intervalTime = 1000/this.fps;
-        setInterval( () => {
-            this.gameObjects.forEach(element => {
-                element.update()   
-            });
-        }, intervalTime)
+
+        this.world.update();
+
     }
 
 }

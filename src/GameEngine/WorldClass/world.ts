@@ -1,4 +1,6 @@
-import {Cell} from './cell';
+
+import {SubWorld} from './sub_world';
+import { GameObject } from '../GameObject/game_object';
 
 export class World{
 
@@ -6,10 +8,23 @@ export class World{
     private static instance : World;
 
     //size of the world
-    private size: number;
+    private size: number = 25;
 
     //this will store all the cells created
-    private cells : Cell[] = [];
+    private subworlds : SubWorld[] = [];
+
+    /**
+     * Size of each subworld
+     * defined by a constant
+     */
+    private SUBWORLDSIZE = 10;
+
+    /**
+     * Number of subworlds in rows
+     * Note: Number of rows = Number of Columns
+     * Therfore, subworldRows^2 = total number of subworlds
+     */
+    private subworldRows = 0;
 
     constructor(){
 
@@ -29,32 +44,69 @@ export class World{
         //adds cell to cells array 
         //two forloops allows us to create 
         //an array of size = this.size ^ 2
-        for(let i = 0; i< size; i++)
+        this.subworldRows = Math.ceil(size / this.SUBWORLDSIZE);
+        let totalSubWorlds =  Math.pow( this.subworldRows , 2);
+
+        for(let i = 0; i< totalSubWorlds; i++)
         {
-            for(let j = 0; j< size; j++)
-            {
-                this.addCell();
-            }
+                this.subworlds.push(new SubWorld(i));   
         }
     }
 
-    //returns the cells of the world
-    public getCells(){
-        return this.cells;
+    
+    public init(){
+        //inititalizes all the gameobjects
+        GameObject.gameObjects.forEach(element => {
+            element.init()   
+        });
     }
-    public getCellWithId(id : number){
-        return this.cells[id];
+
+    public update(fps : number = 25){
+        //40ms = 25fps
+        //This function runs an interval throughout the game
+        //it updates all the gameobjects with their update functions
+        //get the time interval for the update loop
+        const intervalTime = 1000/fps;
+        setInterval( () => {
+            GameObject.gameObjects.forEach(element => {
+                element.update()   
+            });
+        }, intervalTime)
     }
+
+
+    public getSubWorldWithUnits(x : number, y : number){
+
+        const ynum = Math.floor(y / this.SUBWORLDSIZE);
+        const xnum = Math.floor(x / this.SUBWORLDSIZE);
+        const subworldId = (ynum * this.subworldRows) + xnum;
+        return this.subworlds[subworldId];
+
+    }
+
     //returns the size of the world
     public getSize(){
         return this.size;
     }
-    //Creates a cell
-    //and saves it
-    //currently saves it to an array
-    //an sqlite database will be implemented later
-    private addCell(){
-        let cell = new Cell(this.cells.length);
-        this.cells.push(cell);
+
+    public getSubWorlds(){
+        return this.subworlds;
     }
+
+    public clearWorld(){
+        for(let i = 0; i < this.subworlds.length; i++)
+        {
+            delete this.subworlds[i];
+        }
+        this.subworlds = [];
+    }
+
+    public clearAllGameObjects(){
+        
+        for(let i = 0; i <  GameObject.gameObjects.length; i++)
+        {
+            delete GameObject.gameObjects[i];
+        }
+    } 
+
 }
