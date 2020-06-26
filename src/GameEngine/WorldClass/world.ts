@@ -17,7 +17,7 @@ export class World{
      * Size of each subworld
      * defined by a constant
      */
-    private SUBWORLDSIZE = 10;
+    public SUBWORLDSIZE = 10;
 
     /**
      * Number of subworlds in rows
@@ -110,6 +110,7 @@ export class World{
             delete GameObject.gameObjects[i];
         }
         GameObject.gameObjects = [];
+        GameObject.nextId = 0;
     } 
 
     public test_assignSubworld(gameObject : GameObject){
