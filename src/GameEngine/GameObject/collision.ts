@@ -63,18 +63,12 @@ export class CollisionObject{
         return this.id;
     }
 
-
-    /**
-     * Returns the area of the collision object
-     * 
-     * This area represents the collision detection boundary of the object
-     */
-    public getCollisionRect(){
-        return []
-    }
-
     public updateRectPositon(){
         this.rect.updateVertices();
+    }
+
+    public update(){
+        this.updateRectPositon();
     }
 
 
@@ -118,10 +112,23 @@ export class CollisionObject{
 
     public isColliding(){
         let subworldsToConsider = this.subworldDetection();
+        let collidingObjects = [];
 
+        //iterate through all the subworlds we need to consider for collision detection
         for(let subworld of subworldsToConsider){
-            //for(let other of subworld.)
+            //iterate through all the collisionObjects
+            for(let other of subworld.getCollisionObjects()){
+
+                if(other != this)
+                {
+                    if(this.isCollidingWithObject(other)){
+                        collidingObjects.push(other);
+                    }
+                }
+            }
         }
+
+        return collidingObjects;
     }
 
     /**
@@ -137,6 +144,8 @@ export class CollisionObject{
                 return true;
             }
         }
+
+        return false;
     }
 
     public isCollidingWithVertex(otherVertex : Vector2)
