@@ -1,10 +1,11 @@
 import { GameObject } from "../GameObject/game_object";
+import { CollisionObject } from "../GameObject/collision";
 
 
 export class SubWorld {
 
-    //stores the gameobjects that are in the sub world
-    private gameObjects: GameObject[] = [];
+    //stores the CollisionObjects that are in the sub world
+    private collisionObjects: CollisionObject[] = [];
 
     private size: number  = 10;
 
@@ -14,21 +15,21 @@ export class SubWorld {
         this.id = id;
     }
 
-    public addGameObject(gameObject : GameObject){ 
-        this.gameObjects.push(gameObject);
+    public addCollisionObject(collisionObjects : CollisionObject){ 
+        this.collisionObjects.push(collisionObjects);
     }
 
-    public removeGameObject(gameObject : GameObject){
-        let index = this.gameObjects.indexOf(gameObject);
-        return this.gameObjects.splice(index,1)[0];
+    public removeCollisionObject(collisionObjects : CollisionObject){
+        let index = this.collisionObjects.indexOf(collisionObjects);
+        return this.collisionObjects.splice(index,1)[0];
     }
 
-    public contains(gameObject : GameObject){
-        return this.gameObjects.includes(gameObject);
+    public contains(collisionObjects : CollisionObject){
+        return this.collisionObjects.includes(collisionObjects);
     }
 
-    public getGameobjects(){
-        return this.gameObjects;
+    public getCollisionObjects(){
+        return this.collisionObjects;
     }
 
     public getId(){

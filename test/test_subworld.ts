@@ -2,70 +2,77 @@ import {expect} from "chai";
 import { World } from '../src/GameEngine/WorldClass/world';
 import { GameObject } from "../src/GameEngine/GameObject/game_object";
 import { SubWorld } from "../src/GameEngine/WorldClass/sub_world";
+import { CollisionObject } from "../src/GameEngine/GameObject/collision";
 
 describe("SubWorld", () => {
 
     it('AddGameObject', () => {
         const a = new GameObject();
         const b = new GameObject();
+        const colA = new CollisionObject(a);
+        const colB = new CollisionObject(b);
+
 
         const subworld = new SubWorld(0);
 
-        subworld.addGameObject(a);
-        subworld.addGameObject(b);
+        subworld.addCollisionObject(colA);
+        subworld.addCollisionObject(colA);
 
-        expect(subworld.getGameobjects().length).to.equal(2);
+        expect(subworld.getCollisionObjects().length).to.equal(2);
         
     });
-    it('removeGameObject', () => {
+    it('removeCollisionObject', () => {
         const a = new GameObject();
         const b = new GameObject();
+        const colA = new CollisionObject(a);
+        const colB = new CollisionObject(b);
 
         const subworld = new SubWorld(0);
 
-        subworld.addGameObject(a);
-        subworld.addGameObject(b);
+        subworld.addCollisionObject(colA);
+        subworld.addCollisionObject(colB);
 
-        expect(subworld.getGameobjects().length).to.equal(2);
+        expect(subworld.getCollisionObjects().length).to.equal(2);
         
-        let removedA = subworld.removeGameObject(a);
-        expect(removedA).to.equal(a);
-        expect(subworld.getGameobjects().length).to.equal(1);
+        let removedA = subworld.removeCollisionObject(colA);
+        expect(removedA).to.equal(colA);
+        expect(subworld.getCollisionObjects().length).to.equal(1);
 
-        let removedB = subworld.removeGameObject(b);
-        expect(removedB).to.equal(b);
-        expect(subworld.getGameobjects().length).to.equal(0);
+        let removedB = subworld.removeCollisionObject(colB);
+        expect(removedB).to.equal(colB);
+        expect(subworld.getCollisionObjects().length).to.equal(0);
         
         
     });
 
-    it('removeGameObject', () => {
+    it('removeCollisionObject', () => {
         const a = new GameObject();
         const b = new GameObject();
         const c = new GameObject();
-        
+        const colA = new CollisionObject(a);
+        const colB = new CollisionObject(b);
+        const colC = new CollisionObject(c);
+
         const subworld = new SubWorld(0);
         
-        subworld.addGameObject(a);
-        subworld.addGameObject(b);
+        subworld.addCollisionObject(colA);
+        subworld.addCollisionObject(colB);
         
-        expect(subworld.contains(a)).to.true;
-        expect(subworld.contains(b)).to.true;
-        expect(subworld.contains(c)).to.false;
+        expect(subworld.contains(colA)).to.true;
+        expect(subworld.contains(colB)).to.true;
+        expect(subworld.contains(colC)).to.false;
         
-        subworld.removeGameObject(b);
-        
-        subworld.addGameObject(c);
-        expect(subworld.contains(a)).to.true;
-        expect(subworld.contains(b)).to.false;
-        expect(subworld.contains(c)).to.true;
-        
-        subworld.removeGameObject(a);
-        subworld.removeGameObject(c);
+        subworld.removeCollisionObject(colB);
+        subworld.addCollisionObject(colC);
 
-        expect(subworld.getGameobjects().length).to.equal(0);
+        expect(subworld.contains(colA)).to.true;
+        expect(subworld.contains(colB)).to.false;
+        expect(subworld.contains(colC)).to.true;
         
+        subworld.removeCollisionObject(colA);
+        subworld.removeCollisionObject(colC);
 
+        expect(subworld.getCollisionObjects().length).to.equal(0);
 
     });
 

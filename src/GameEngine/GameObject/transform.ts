@@ -21,6 +21,4 @@ export class Transform {
         this.rotation += degree;
     }
 
-
-
 }

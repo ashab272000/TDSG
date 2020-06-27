@@ -1,6 +1,8 @@
 
 import {SubWorld} from './sub_world';
 import { GameObject } from '../GameObject/game_object';
+import { Vector2 } from '../GameObject/vector2';
+import { CollisionObject } from '../GameObject/collision';
 
 export class World{
 
@@ -58,8 +60,11 @@ export class World{
         //inititalizes all the gameobjects
         GameObject.gameObjects.forEach(element => {
             element.init()   
-            this.assignSubworld(element);
         });
+
+        CollisionObject.collisionObjects.forEach(el => {
+            this.assignSubworld(el);
+        })
     }
 
     public update(fps : number = 25){
@@ -71,18 +76,29 @@ export class World{
         setInterval( () => {
             GameObject.gameObjects.forEach(element => {
                 element.update();  
-                this.assignSubworld(element);
             });
+            CollisionObject.collisionObjects.forEach(el => {
+                this.assignSubworld(el);
+            })
         }, intervalTime)
     }
 
+    /**
+     * Get the subworld with the parameter being a vector2
+     * @param vector2 
+     * @returns null if does not exist or the subworld if exist
+     */
+    public getSubWorldWithUnits(vector2 : Vector2){
 
-    public getSubWorldWithUnits(x : number, y : number){
-
-        const ynum = Math.floor(y / this.SUBWORLDSIZE);
-        const xnum = Math.floor(x / this.SUBWORLDSIZE);
+        const ynum = Math.floor(vector2.y / this.SUBWORLDSIZE);
+        const xnum = Math.floor(vector2.x / this.SUBWORLDSIZE);
         const subworldId = (ynum * this.subworldRows) + xnum;
-        return this.subworlds[subworldId];
+        if(subworldId < 0 && subworldId >= this.subworlds.length)
+        {
+            return null;
+        }else{
+            return this.subworlds[subworldId];
+        }
 
     }
 
@@ -113,25 +129,44 @@ export class World{
         GameObject.nextId = 0;
     } 
 
-    public test_assignSubworld(gameObject : GameObject){
-        this.assignSubworld(gameObject);
+    public clearAllCollisionObjects(){
+        
+        for(let i = 0; i <  CollisionObject.collisionObjects.length; i++)
+        {
+            delete CollisionObject.collisionObjects[i];
+        }
+        CollisionObject.collisionObjects = [];
+    } 
+
+    public test_assignSubworld(collisionObject : CollisionObject){
+        this.assignSubworld(collisionObject);
     }
 
-    private assignSubworld(gameObject : GameObject){
+    private assignSubworld(collisionObject : CollisionObject){
 
+        //gameobject of the collisionObject
+        let gameObject = collisionObject.getGameObject();
+        //position of the gameobject
         let pos = gameObject.transform.position;
-        let subworld = this.getSubWorldWithUnits(pos.x, pos.y);
-        if(gameObject.subworld != null || gameObject.subworld != undefined)
+        //subworld of the gameobject
+        let subworld = this.getSubWorldWithUnits(pos);
+        //if subworld exists
+        //  check if their subworld == the new calcualted subworld
+        //  if not same : change subworld to the new calculated subworld
+        //else
+        //calculate and assign subworld to collisionObject
+
+        if(collisionObject.subworld != null || collisionObject.subworld != undefined)
         {
-            if(subworld != gameObject.subworld){
-                gameObject.subworld.removeGameObject(gameObject);
-                subworld.addGameObject(gameObject);
-                gameObject.subworld = subworld;
+            if(subworld != collisionObject.subworld){
+                collisionObject.subworld.removeCollisionObject(collisionObject);
+                subworld.addCollisionObject(collisionObject);
+                collisionObject.subworld = subworld;
             }
             
         }else{
-            subworld.addGameObject(gameObject);
-            gameObject.subworld = subworld;
+            subworld.addCollisionObject(collisionObject);
+            collisionObject.subworld = subworld;
         }
     }
 

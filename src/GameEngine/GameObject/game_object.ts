@@ -18,8 +18,6 @@ export class GameObject {
     //but not active
     public isEnabled: boolean;
 
-    //the id of the subworld the gameobject is located in
-    public subworld : SubWorld = null;
     //this is the image or sprite of the gameobject
     private image: HTMLImageElement;
 
