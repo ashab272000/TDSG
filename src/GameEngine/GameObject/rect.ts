@@ -33,6 +33,7 @@ export class Rect extends Transform{
 
     constructor(size : Vector2){
         super();
+        this.size = size;
         this.vertices.push(new Vector2(0,0));
         this.vertices.push(new Vector2(this.size.x, 0));
         this.vertices.push(new Vector2(this.size.x, this.size.y));

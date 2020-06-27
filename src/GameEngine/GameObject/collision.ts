@@ -37,8 +37,7 @@ export class CollisionObject{
 
         //create a new rect for the subworldDetectionRect
         let dSize = World.getInstance().SUBWORLDSIZE;
-        this.subworldDetectionRect = new Rect(new Vector2(dSize/2, dSize/2));
-        
+        this.subworldDetectionRect = new Rect(new Vector2(dSize/2, dSize/2));        
 
         //create rect for the collision object
         this.gameobject = gameobject;
@@ -87,11 +86,11 @@ export class CollisionObject{
      * @returns a list of subworlds
      */
     public subworldDetection(){
-        let sizeX = this.subworldDetectionRect.size.x/2;
-        let sizeY = this.subworldDetectionRect.size.y/2;
+        let posX = this.subworldDetectionRect.size.x/2;
+        let posY = this.subworldDetectionRect.size.y/2;
 
         //update the vertices after setting the position of the rect
-        this.subworldDetectionRect.position = Vector2.substract(this.gameobject.transform.position, new Vector2( sizeX, sizeY));
+        this.subworldDetectionRect.position = Vector2.substract(this.gameobject.transform.position, new Vector2( posX, posY));
         this.subworldDetectionRect.updateVertices();
 
         //get the vertices of the rect which is positioned 
@@ -103,9 +102,13 @@ export class CollisionObject{
         //each vertex will detect the subworld
         //and save them on th array defined above
         for(let vertex of vertices){
+            
             let subworld = World.getInstance().getSubWorldWithUnits(vertex);
-            if(!subworldsToDetect.includes(subworld)){
-                subworldsToDetect.push(subworld);
+            if(subworld != null)
+            {
+                if(!subworldsToDetect.includes(subworld)){
+                    subworldsToDetect.push(subworld);
+                }
             }
         }
 
@@ -129,7 +132,6 @@ export class CollisionObject{
 
         for (let element of other.getRect().getVertices()){
             let result = this.isCollidingWithVertex(element);
-            console.log(result);
             if(result == true)
             {
                 return true;
