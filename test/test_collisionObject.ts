@@ -1,6 +1,6 @@
 import {expect} from "chai";
 import { GameObject }  from '../src/GameEngine/GameObject/game_object';
-import { CollisionObject }  from '../src/GameEngine/GameObject/collision';
+import { CollisionObject }  from '../src/GameEngine/GameObject/collision/collision';
 import { Vector2 } from "../src/GameEngine/GameObject/vector2";
 import { World } from "../src/GameEngine/WorldClass/world";
 

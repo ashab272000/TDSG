@@ -2,7 +2,7 @@ import {expect} from "chai";
 import { World } from '../src/GameEngine/WorldClass/world';
 import { GameObject } from "../src/GameEngine/GameObject/game_object";
 import { SubWorld } from "../src/GameEngine/WorldClass/sub_world";
-import { CollisionObject } from "../src/GameEngine/GameObject/collision";
+import { CollisionObject } from "../src/GameEngine/GameObject/collision/collision";
 
 describe("SubWorld", () => {
 

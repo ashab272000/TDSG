@@ -1,5 +1,5 @@
 import { GameObject } from "../GameObject/game_object";
-import { CollisionObject } from "../GameObject/collision";
+import { CollisionObject } from "../GameObject/collision/collision";
 
 
 export class SubWorld {

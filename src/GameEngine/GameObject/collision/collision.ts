@@ -1,8 +1,8 @@
-import { GameObject } from "./game_object";
-import { Rect } from "./rect";
-import { World } from "../WorldClass/world";
-import { Vector2 } from "./vector2";
-import { SubWorld } from "../WorldClass/sub_world";
+import { GameObject } from "../game_object";
+import Rect from "../rect";
+import { World } from "../../WorldClass/world";
+import { Vector2 } from "../vector2";
+import { SubWorld } from "../../WorldClass/sub_world";
 
 export class CollisionObject{
 
@@ -112,7 +112,7 @@ export class CollisionObject{
 
     public isColliding(){
         let subworldsToConsider = this.subworldDetection();
-        let collidingObjects = [];
+        let collidingObjects : CollisionObject[] = [];
 
         //iterate through all the subworlds we need to consider for collision detection
         for(let subworld of subworldsToConsider){
@@ -137,17 +137,22 @@ export class CollisionObject{
      */
     public isCollidingWithObject(other : CollisionObject) {
 
-        for (let element of other.getRect().getVertices()){
-            let result = this.isCollidingWithVertex(element);
+        return this.isCollidingWithRect(other.getRect());
+    }
+
+    public isCollidingWithRect(otherRect : Rect){
+        
+        for(let vertex of otherRect.getVertices())
+        {
+            let result = this.isCollidingWithVertex(vertex);
             if(result == true)
             {
                 return true;
             }
         }
-
         return false;
     }
-
+    
     public isCollidingWithVertex(otherVertex : Vector2)
     {
         let left = this.getRect().getVertices()[0].x;
@@ -156,6 +161,42 @@ export class CollisionObject{
         let bottom = this.getRect().getVertices()[2].y;
         if(left <= otherVertex.x && otherVertex.x <= right && top <= otherVertex.y && otherVertex.y <= bottom){
             return true;
+        }
+        return false;
+    }
+    
+    /**
+     * Same as 'isCollidingWithVertex()' but does not account the edges
+     * @param otherVertex 
+     */
+    public isCollidingWithVertexInsideRect(otherVertex : Vector2){
+        let left = this.getRect().getVertices()[0].x;
+        let right = this.getRect().getVertices()[1].x;
+        let top = this.getRect().getVertices()[1].y;
+        let bottom = this.getRect().getVertices()[2].y;
+        
+        if(left < otherVertex.x && otherVertex.x < right && top < otherVertex.y && otherVertex.y < bottom){
+            return true;
+        }
+        
+        return false
+    }   
+
+    /**
+     * Same as isCollidingWithRect but uses isCollidingWithVertexInsideRect
+     * @param otherRect 
+     */
+    public isCollidingWithRectInsideRect(otherRect : Rect){
+        
+        console.log('helloworld');
+        for(let vertex of otherRect.getVertices())
+        {
+            let result = this.isCollidingWithVertexInsideRect(vertex);
+            console.log(result);
+            if(result == true)
+            {
+                return true;
+            }
         }
         return false;
     }

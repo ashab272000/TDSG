@@ -2,7 +2,7 @@
 import {SubWorld} from './sub_world';
 import { GameObject } from '../GameObject/game_object';
 import { Vector2 } from '../GameObject/vector2';
-import { CollisionObject } from '../GameObject/collision';
+import { CollisionObject } from '../GameObject/collision/collision';
 
 export class World{
 
