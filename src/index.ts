@@ -13,7 +13,6 @@ document.body.appendChild(component());
 
 const main = () => {
     new GameRunner(25, 25);
-    
 }
 
 main();

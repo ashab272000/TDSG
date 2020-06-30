@@ -3,8 +3,12 @@ import {SubWorld} from './sub_world';
 import { GameObject } from '../GameObject/game_object';
 import { Vector2 } from '../GameObject/vector2';
 import { CollisionObject } from '../GameObject/collision/collision';
+import { Camera } from '../canvas/camera';
 
 export class World{
+
+    //unitToPixelConversionRate
+    public PIXELUNIT = 25;
 
     //creating singleton
     private static instance : World;
@@ -28,8 +32,10 @@ export class World{
      */
     private subworldRows = 0;
 
-    constructor(){
+    private mainCamera : Camera;
 
+    constructor(){
+        this.mainCamera = Camera.fullScreenCanvas();
     }
 
     public static getInstance(){
@@ -58,6 +64,7 @@ export class World{
     
     public init(){
         //inititalizes all the gameobjects
+
         GameObject.gameObjects.forEach(element => {
             element.init()   
         });
@@ -77,6 +84,7 @@ export class World{
         setInterval( () => {
             GameObject.gameObjects.forEach(element => {
                 element.update();  
+                this.mainCamera.drawGameObject(element);
             });
             CollisionObject.collisionObjects.forEach(el => {
                 this.assignSubworld(el);

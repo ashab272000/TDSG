@@ -1,5 +1,6 @@
 import { Transform } from "./transform";
 import { SubWorld } from "../WorldClass/sub_world";
+import { World } from "../WorldClass/world";
 
 export class GameObject {
     //saves all the GameObject instances
@@ -34,16 +35,18 @@ export class GameObject {
         GameObject.nextId++;
     }
 
-    getId(){
+    public setImage(src){
+        const pixelSize = World.getInstance().PIXELUNIT;
+        this.image = new Image(this.transform.size.x * pixelSize, this.transform.size.y * pixelSize);
+        this.image.src = src;
+    }
+
+    public getId(){
         return this.id;
     }
 
     getImage(){
         return this.image;
-    }
-
-    setImage(image : HTMLImageElement){
-        this.image = image;
     }
 
     addChild(object: GameObject) {
