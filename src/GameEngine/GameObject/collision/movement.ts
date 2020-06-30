@@ -54,6 +54,10 @@ export class Movement{
         return result;
     }
 
+    /**
+     * moves the collision object to certain position
+     * @param vector2 
+     */
     public moveTo(vector2 : Vector2){
 
         let pos = this.gameObject.transform.position;
@@ -67,10 +71,11 @@ export class Movement{
             let others = this.collisionObject.isColliding();
             if(others.length > 0)
             {
+
                 let vertex = this.collisionObject.getFirstVetexCollided(others[0].getRect());
+                //check the movement of the object, for example, is it left, right, up or down?
                 if(Math.abs(pos.x - prePos.x) > Math.abs(pos.y - prePos.y))
                 {
-                    console.log('X axis')
                     if(pos.x > prePos.x)
                     {
                         let diffX = vertex.x - pos.x;
@@ -101,8 +106,11 @@ export class Movement{
         }
     }
 
+
     public translate(vector2 : Vector2){
 
+        let translatedPos = Vector2.add(this.gameObject.transform.position, vector2);
+        this.moveTo(translatedPos);
         
     }
 }
