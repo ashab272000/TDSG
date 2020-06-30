@@ -188,17 +188,31 @@ export class CollisionObject{
      */
     public isCollidingWithRectInsideRect(otherRect : Rect){
         
-        console.log('helloworld');
         for(let vertex of otherRect.getVertices())
         {
             let result = this.isCollidingWithVertexInsideRect(vertex);
-            console.log(result);
             if(result == true)
             {
                 return true;
             }
         }
         return false;
+    }
+
+    /**
+     * returns the vertex that is collided this
+     */
+    public getFirstVetexCollided(otherRect : Rect){
+
+        for(let vertex of otherRect.getVertices())
+        {
+            let result = this.isCollidingWithVertex(vertex);
+            if(result == true)
+            {
+                return vertex;
+            }
+        }
+        return null;
     }
 
 }

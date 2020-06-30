@@ -52,6 +52,57 @@ export class Movement{
         }
 
         return result;
+    }
 
+    public moveTo(vector2 : Vector2){
+
+        let pos = this.gameObject.transform.position;
+        let prePos = new Vector2(pos.x, pos.y);
+        
+        if(this.canMove(vector2))
+        {
+            this.gameObject.transform.setPosition(vector2);
+            this.collisionObject.updateRectPositon();
+
+            let others = this.collisionObject.isColliding();
+            if(others.length > 0)
+            {
+                let vertex = this.collisionObject.getFirstVetexCollided(others[0].getRect());
+                if(Math.abs(pos.x - prePos.x) > Math.abs(pos.y - prePos.y))
+                {
+                    console.log('X axis')
+                    if(pos.x > prePos.x)
+                    {
+                        let diffX = vertex.x - pos.x;
+                        let translateX = this.gameObject.transform.size.x - diffX;
+                        this.gameObject.transform.translate(-translateX, 0);
+                    }else{
+                        let translateX = vertex.x - pos.x;
+                        this.gameObject.transform.translate(translateX, 0);
+
+                    }
+                }else{
+                    console.log('Y axis')
+                    if(pos.y > prePos.y)
+                    {
+                        let diffY = vertex.y - pos.y;
+                        let translateY = this.gameObject.transform.size.y - diffY;
+                        this.gameObject.transform.translate(0, -translateY);
+                    }else{
+                        let translateY = vertex.y - pos.y;
+                        this.gameObject.transform.translate(0, translateY);
+
+                    }
+                }
+
+                this.collisionObject.updateRectPositon();
+            }
+            
+        }
+    }
+
+    public translate(vector2 : Vector2){
+
+        
     }
 }

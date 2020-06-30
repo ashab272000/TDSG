@@ -21,4 +21,9 @@ export class Transform {
         this.rotation += degree;
     }
 
+    public setPosition(vector2 : Vector2){
+        this.position.x = vector2.x;
+        this.position.y = vector2.y;
+    }
+
 }
