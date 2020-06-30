@@ -33,11 +33,13 @@ export class Camera {
     }
 
     public drawGameObject(gameObject : GameObject){
-        if(gameObject.getImage() != null)
+        if(gameObject.getImage() != null && gameObject.getImage().complete)
         {
             let pos = Vector2.substract(gameObject.transform.position, this.rect.position);
             let relPos = this.posToPixelObj(pos);
+            this.ctx.save();
             this.ctx.drawImage(gameObject.getImage(), relPos.x, relPos.y);
+            this.ctx.restore();
         }
     }
 

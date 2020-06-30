@@ -89,7 +89,7 @@ export class World{
             CollisionObject.collisionObjects.forEach(el => {
                 this.assignSubworld(el);
                 el.update();
-            })
+            });
         }, intervalTime)
     }
 

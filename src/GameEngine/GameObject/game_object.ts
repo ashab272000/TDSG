@@ -1,6 +1,7 @@
 import { Transform } from "./transform";
 import { SubWorld } from "../WorldClass/sub_world";
 import { World } from "../WorldClass/world";
+import { Vector2 } from "./vector2";
 
 export class GameObject {
     //saves all the GameObject instances
@@ -35,10 +36,15 @@ export class GameObject {
         GameObject.nextId++;
     }
 
-    public setImage(src){
+    public setImage(src : string){
         const pixelSize = World.getInstance().PIXELUNIT;
         this.image = new Image(this.transform.size.x * pixelSize, this.transform.size.y * pixelSize);
         this.image.src = src;
+    }
+
+    public pixelSizeToUnit(vector2 : Vector2){
+        let newVector = new Vector2(vector2.x/ World.getInstance().PIXELUNIT, vector2.y/World.getInstance().PIXELUNIT);
+        return newVector;
     }
 
     public getId(){
