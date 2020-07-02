@@ -33,12 +33,25 @@ export class Camera {
     }
 
     public drawGameObject(gameObject : GameObject){
-        if(gameObject.getImage() != null && gameObject.getImage().complete)
+        if(gameObject.getSprite() != null && gameObject.getSprite().getImage().complete)
         {
             let pos = Vector2.substract(gameObject.transform.position, this.rect.position);
             let relPos = this.posToPixelObj(pos);
             this.ctx.save();
-            this.ctx.drawImage(gameObject.getImage(), relPos.x, relPos.y);
+
+            //screw this
+            
+            let sx = gameObject.getSprite().getSourcePos().x;
+            let sy = gameObject.getSprite().getSourcePos().y;
+            let sw = gameObject.getSprite().getSourceSize().x;
+            let sh = gameObject.getSprite().getSourceSize().y;
+            let dx = gameObject.getSprite().position.x;
+            let dy = gameObject.getSprite().position.y;
+            let dw = gameObject.getSprite().size.x;
+            let dh = gameObject.getSprite().size.y;
+
+            let toPixelSize = World.getInstance().PIXELUNIT;
+            this.ctx.drawImage(gameObject.getSprite().getImage(), sx, sy, sw, sh, dx * toPixelSize, dy * toPixelSize, dw * toPixelSize, dh * toPixelSize);
             this.ctx.restore();
         }
     }

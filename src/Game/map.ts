@@ -7,7 +7,9 @@ export class Map extends GameObject{
 
     constructor(){
         super();
-        this.transform.size = this.pixelSizeToUnit(new Vector2(4000, 4000));
+
+        //4000/25 = 160
+        this.transform.size = new Vector2(160, 160);
         this.setImage(MapImage);
         //this.setImage(src)
     }

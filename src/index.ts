@@ -1,6 +1,7 @@
 import  './styles/style.css'
 import { GameRunner } from './GameEngine/game_runner';
 import { Map } from './Game/map';
+import { Player } from './Game/Player/player';
 function component() {
     const element = document.createElement('div');
   
@@ -14,6 +15,7 @@ document.body.appendChild(component());
 
 const main = () => {
     const map = new Map();
+    const player = new Player();
     new GameRunner(map.transform.size.x, 1);
 }
 

@@ -2,6 +2,7 @@ import { Transform } from "./transform";
 import { SubWorld } from "../WorldClass/sub_world";
 import { World } from "../WorldClass/world";
 import { Vector2 } from "./vector2";
+import { Sprite } from "./sprite";
 
 export class GameObject {
     //saves all the GameObject instances
@@ -21,7 +22,7 @@ export class GameObject {
     public isEnabled: boolean;
 
     //this is the image or sprite of the gameobject
-    private image: HTMLImageElement;
+    private sprite: Sprite;
 
     constructor() {
         this.id = GameObject.nextId;
@@ -36,23 +37,16 @@ export class GameObject {
         GameObject.nextId++;
     }
 
-    public setImage(src : string){
-        const pixelSize = World.getInstance().PIXELUNIT;
-        this.image = new Image(this.transform.size.x * pixelSize, this.transform.size.y * pixelSize);
-        this.image.src = src;
-    }
-
-    public pixelSizeToUnit(vector2 : Vector2){
-        let newVector = new Vector2(vector2.x/ World.getInstance().PIXELUNIT, vector2.y/World.getInstance().PIXELUNIT);
-        return newVector;
+    public setSprite(sprite : Sprite){
+        this.sprite = sprite;
     }
 
     public getId(){
         return this.id;
     }
 
-    getImage(){
-        return this.image;
+    public getSprite(){
+        return this.sprite;
     }
 
     addChild(object: GameObject) {
@@ -60,11 +54,10 @@ export class GameObject {
     }
 
     init() {
-
+        this.sprite.setPosition(this.transform.position);
     }
 
     update() {
-
     }
 
 }
