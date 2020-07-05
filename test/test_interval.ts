@@ -25,7 +25,7 @@ describe('Testing Interval', () => {
         );
     });
 
-    it.only('Interval test : 2', async () => {
+    it('Interval test : 2', async () => {
         let b = 0;
         let a = new Interval(() => {
             b++;
