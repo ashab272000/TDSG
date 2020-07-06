@@ -32,10 +32,8 @@ export class World{
      */
     private subworldRows = 0;
 
-    private mainCamera : Camera;
 
     constructor(){
-        this.mainCamera = Camera.fullScreenCanvas();
     }
 
     public static getInstance(){
@@ -84,7 +82,6 @@ export class World{
         setInterval( () => {
             GameObject.gameObjects.forEach(element => {
                 element.update();  
-                this.mainCamera.drawGameObject(element);
             });
             CollisionObject.collisionObjects.forEach(el => {
                 this.assignSubworld(el);

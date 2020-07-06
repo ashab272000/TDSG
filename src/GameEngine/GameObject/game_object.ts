@@ -2,7 +2,7 @@ import { Transform } from "./transform";
 import { SubWorld } from "../WorldClass/sub_world";
 import { World } from "../WorldClass/world";
 import { Vector2 } from "./vector2";
-import { Sprite } from "./sprite";
+import { Sprite } from "./Sprite/sprite";
 
 export class GameObject {
     //saves all the GameObject instances
@@ -21,8 +21,6 @@ export class GameObject {
     //but not active
     public isEnabled: boolean;
 
-    //this is the image or sprite of the gameobject
-    private sprite: Sprite;
 
     constructor() {
         this.id = GameObject.nextId;
@@ -37,16 +35,9 @@ export class GameObject {
         GameObject.nextId++;
     }
 
-    public setSprite(sprite : Sprite){
-        this.sprite = sprite;
-    }
 
     public getId(){
         return this.id;
-    }
-
-    public getSprite(){
-        return this.sprite;
     }
 
     addChild(object: GameObject) {
@@ -54,7 +45,7 @@ export class GameObject {
     }
 
     init() {
-        this.sprite.setPosition(this.transform.position);
+        
     }
 
     update() {
