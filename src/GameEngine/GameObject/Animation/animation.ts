@@ -17,30 +17,40 @@ export class Animation{
     
     
     constructor(sprite : MultiSprite, frames : number[], animationTime : number = 1000){
+        this.sprite = sprite;
         this.frames = frames;
         this.animationTime = animationTime;
         this.updateTimePerFrame();
-    }
-
-    public start(){
         this.animationPlay = new Interval(() => {
             this.currentFrame++;
             this.currentFrame %= this.frames.length;
-            let sourcePos = this.sprite.getSpriteSrcPos(this.currentFrame);
+            let sourcePos = this.sprite.getSpriteSrcPos(this.frames[this.currentFrame]);
             this.sprite.setSourcePos(sourcePos);
         }, this.timePerFrame);
+    }
+
+    public play(){
+        this.animationPlay.run();
     }
 
     public pause(){
         this.animationPlay.pause();
     }
 
-    public resume(){
-        this.animationPlay.resume();
+    public stop(){
+        this.animationPlay.pause();
     }
 
     public updateTimePerFrame(){
         this.timePerFrame = Math.floor(this.animationTime / this.frames.length);
+    }
+
+    public getCurrentFrame(){
+        return this.frames[this.currentFrame];
+    }
+
+    public getTimePerFrame(){
+        return this.timePerFrame;
     }
 
 
