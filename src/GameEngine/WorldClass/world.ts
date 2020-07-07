@@ -4,6 +4,7 @@ import { GameObject } from '../GameObject/game_object';
 import { Vector2 } from '../GameObject/vector2';
 import { CollisionObject } from '../GameObject/collision/collision';
 import { Camera } from '../canvas/camera';
+import { AnimationController } from '../GameObject/Animation/animationController';
 
 export class World{
 
@@ -80,6 +81,9 @@ export class World{
         //get the time interval for the update loop
         const intervalTime = 1000/fps;
         setInterval( () => {
+            AnimationController.instances.forEach(el => {
+                el.update();
+            });
             GameObject.gameObjects.forEach(element => {
                 element.update();  
             });

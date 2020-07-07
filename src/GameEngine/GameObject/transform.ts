@@ -26,4 +26,9 @@ export class Transform {
         this.position.y = vector2.y;
     }
 
+    public inherit(parent : Transform){
+        this.position = parent.position;
+        this.size = parent.size;
+    }
+
 }
