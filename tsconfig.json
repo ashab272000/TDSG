@@ -9,6 +9,7 @@
       "allowJs": true,
       "experimentalDecorators": true,
       "noEmitOnError": true,
+      "typeRoots":  ["./node_modules/@types", "./custom_typings"],
     },
 
     "include": [

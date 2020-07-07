@@ -1,4 +1,8 @@
 import { Transform } from "./transform";
+import { SubWorld } from "../WorldClass/sub_world";
+import { World } from "../WorldClass/world";
+import { Vector2 } from "./vector2";
+import { Sprite } from "./Sprite/sprite";
 
 export class GameObject {
     //saves all the GameObject instances
@@ -16,8 +20,7 @@ export class GameObject {
     //isEnabled will allow us to have a gameobject in the world
     //but not active
     public isEnabled: boolean;
-    //this is the image or sprite of the gameobject
-    private image: HTMLImageElement;
+
 
     constructor() {
         this.id = GameObject.nextId;
@@ -32,16 +35,9 @@ export class GameObject {
         GameObject.nextId++;
     }
 
-    getId(){
+
+    public getId(){
         return this.id;
-    }
-
-    getImage(){
-        return this.image;
-    }
-
-    setImage(image : HTMLImageElement){
-        this.image = image;
     }
 
     addChild(object: GameObject) {
@@ -49,11 +45,10 @@ export class GameObject {
     }
 
     init() {
-
+        
     }
 
     update() {
-
     }
 
 }
