@@ -52,7 +52,13 @@ export class Camera extends GameObject{
             let dh = sprite.size.y;
 
             let toPixelSize = World.getInstance().PIXELUNIT;
-            this.ctx.drawImage(sprite.getImage(), sx, sy, sw, sh, dx * toPixelSize, dy * toPixelSize, dw * toPixelSize, dh * toPixelSize);
+            //this.ctx.translate(dx * toPixelSize + (dw * toPixelSize)/2, dy * toPixelSize + (dh * toPixelSize)/2);
+            this.ctx.translate(dx * toPixelSize , dy * toPixelSize );
+            //this.ctx.translate(dx * toPixelSize , dy* toPixelSize);
+            this.ctx.rotate(sprite.rotation);
+            // this.ctx.drawImage(sprite.getImage(), sx, sy, sw, sh, 0, 0, dw * toPixelSize, dh * toPixelSize);
+            this.ctx.drawImage(sprite.getImage(), sx, sy, sw, sh, -(dw * toPixelSize)/2, -(dh * toPixelSize)/2, dw * toPixelSize, dh * toPixelSize);
+            //this.ctx.drawImage(sprite.getImage(), sx, sy, sw, sh, -(dw * toPixelSize)/2, -(dh * toPixelSize)/2, dw * toPixelSize, dh * toPixelSize);
             this.ctx.restore();
         }
     }

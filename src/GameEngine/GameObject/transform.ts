@@ -2,6 +2,7 @@ import { Vector2 } from "./vector2";
 import { World } from "../WorldClass/world";
 
 export class Transform {
+    private parent : Transform;
     public position: Vector2;
     public rotation: number;
     public size : Vector2;
@@ -29,6 +30,7 @@ export class Transform {
     public inherit(parent : Transform){
         this.position = parent.position;
         this.size = parent.size;
+        this.rotation = parent.rotation;
     }
 
 }

@@ -5,6 +5,7 @@ import { Vector2 } from '../GameObject/vector2';
 import { CollisionObject } from '../GameObject/collision/collision';
 import { Camera } from '../canvas/camera';
 import { AnimationController } from '../GameObject/Animation/animationController';
+import { Input } from '../Input/input';
 
 export class World{
 
@@ -64,6 +65,7 @@ export class World{
     public init(){
         //inititalizes all the gameobjects
 
+        Input.init();
         GameObject.gameObjects.forEach(element => {
             element.init()   
         });

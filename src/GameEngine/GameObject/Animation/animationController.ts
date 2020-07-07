@@ -3,7 +3,7 @@ import {Animation} from './animation';
 
 export class AnimationController {
 
-    private animations : Map<boolean, Animation>;
+    private animations : Map<Animation, boolean>;
     static instances : AnimationController[] = []; 
 
     constructor(){
@@ -11,24 +11,26 @@ export class AnimationController {
         AnimationController.instances.push(this);
     }
 
-    /**
-     * 
-     * @param name Name of the animation
-     */
-    public addAnimation(animation : Animation, condition : boolean){
-
-        this.animations.set(condition,animation);
+    public updateAnimation(animation : Animation, condition : boolean)
+    {
+        this.animations.set(animation, condition);
     }
 
     private playAnimation(){
 
+        let animation : Animation;
+
         for( let k of this.animations.keys())
         {
-            if(k)
+            k.pause();
+            if(this.animations.get(k) == true && animation == undefined)
             {
-                this.animations.get(k).play();
-                return;
+                animation = k;
             }
+        }
+        if(animation)
+        {
+            animation.play();
         }
     }
 
